@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BankTransactionApplication.Models.TransactionModel>
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center"><i class="fas fa-comment-dollar text-success"></i> Transaction History</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.AccountNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.BeneficiaryName)</th>
+            <th>@Html.DisplayNameFor(model => model.Date)</th>
+            <th>@Html.DisplayNameFor(model => model.Amount)</th>
+            <th><a asp-action="AddOrEdit" class="btn btn-success text-white"><i class="fas fa-random"></i> New Transaction</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => item.AccountNumber)</td>
+                <td>@Html.DisplayFor(m => item.BeneficiaryName)</td>
+                <td>@Html.DisplayFor(m => item.Date)</td>
+                <td>@Html.DisplayFor(m => item.Amount)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TransactionId">Edit</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

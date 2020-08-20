@@ -71,4 +71,17 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+/* Change input control border color */
+.form-control, .input-group-text {
+    border: 1px solid #0080ff;
+}
 
+a.btn:hover {
+    cursor: pointer !important;
+}
+
+/*  Increase Modal Popup Start */
+.modal-lg {
+    max-width: 80%;
+}
+/*  Increase Modal Popup End */

@@ -1,0 +1,7 @@
+﻿@model IEnumerable<BankTransactionApplication.Models.TransactionModel>
+
+<h1 class="text-center"><i class="fas fa-comments-dollar text-success"></i> Transaction History</h1>
+
+<div id="view-all">
+    @await Html.PartialAsync("_ViewAll", Model)
+</div>

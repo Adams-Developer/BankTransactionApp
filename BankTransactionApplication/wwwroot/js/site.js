@@ -18,21 +18,20 @@ jQueryAjaxPost = form => {
     try {
         $.ajax({
             type: 'POST',
-            url: form.action, // url for post action method from this form
-            data: new FormData(form), // passs the data from form controls
-            contentType: false, // for input controls
-            processData: false, // for input controls
+            url: form.action, 
+            data: new FormData(form),
+            contentType: false, 
+            processData: false,
             success: function (res) {
-                if (res.isValid) { // check if validation is successful or not
-                    $('#view-all').html(res.html); // replace code in the ViewAll div
-                    $('#form-modal .modal-body').html(''); //clear modal body
-                    $('#form-modal .modal-title').html(''); // clear modal title
+                if (res.isValid) { 
+                    $('#view-all').html(res.html); 
+                    $('#form-modal .modal-body').html(''); 
+                    $('#form-modal .modal-title').html(''); 
                     $('#form-modal').modal('hide');
-                    // Add loading notification
                     $.notify('Submitted Successfully', { globalPosition: 'top center', className:'success' });
 
                 }
-                else { // update the modal body if error messages with addoredit form
+                else { 
                     $('#form-modal .modal-body').html(res.html);
 
                 }
@@ -45,7 +44,6 @@ jQueryAjaxPost = form => {
     catch (e) {
         console.log(e);
     }
-    // to prevent default form submit
     return false;
 }
 
@@ -55,14 +53,12 @@ jQueryAjaxDelete = form => {
         try {
             $.ajax({
                 type: 'POST',
-                url: form.action, // url for post action method from this form
-                // add data, contentType and processData properties for the validateforgerytokens
-                data: new FormData(form), // passs the data from form controls
-                contentType: false, // for input controls
-                processData: false, // for input controls
+                url: form.action, 
+                data: new FormData(form),
+                contentType: false, 
+                processData: false, 
                 success: function (res) {
-                    $('#view-all').html(res.html); // replace code in the ViewAll div
-                    // Add loading notification
+                    $('#view-all').html(res.html); 
                     $.notify('Deleted Successfully', { globalPosition: 'top center', className:'success' });
 
                 },
@@ -74,8 +70,5 @@ jQueryAjaxDelete = form => {
             console.log(e);
         }
     }
-    // to prevent default form submit
     return false;
 }
-
-

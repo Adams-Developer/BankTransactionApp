@@ -80,39 +80,16 @@ namespace BankTransactionApplication.Controllers
                     }
                    
                 }
-                // since we are submitting the form using ajax POST request, return response in JSON format instead of RedirectToAction
-                // return Json function new object, inside that we have the isValid property, html property, after insert or update
-                // we have to pass html table as a string inside
-                // the helper class (this controller, the name of the action, pass in the model which is a list of updated transactions )
+           
                 return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _context.Transactions.ToList()) }); 
             }
-            // if any validation error, return the view(AddOrEdit), pass in transactionModel(contains all the error messages) in the form
             return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", transactionModel) });
         }
 
-        // GET: Transaction/Delete/5
-        // GET Delete View
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var transactionModel = await _context.Transactions
-        //        .FirstOrDefaultAsync(x => x.TransactionId == id);
-
-        //    if (transactionModel == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(transactionModel);
-        //}
 
         // GET: Transaction/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken] // net core security feature (delete button has the form with input fields)
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var transactionModel = await _context.Transactions.FindAsync(id);
